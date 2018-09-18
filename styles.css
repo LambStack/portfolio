@@ -33,6 +33,17 @@ body{
 p{
 	padding:15px 0;
 }
+@media (max-width: 2000px) { 
+	.container{
+		max-width:1300px;
+	}
+}
+
+@media (max-width: 1024px) { 
+	.container{
+		max-width:800px;
+	}
+}
 @media (max-width: 768px) { 
 	.container{
 		max-width:500px;
