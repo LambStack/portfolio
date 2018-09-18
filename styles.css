@@ -33,13 +33,11 @@ body{
 p{
 	padding:15px 0;
 }
-@media (max-width: 2000px) { 
-	.container{
-		max-width:1300px;
-	}
-}
 
-@media (max-width: 1024px) { 
+@media (max-width: 1024px) {
+	html{
+		font-size:12px;	
+	}
 	.container{
 		max-width:800px;
 	}
