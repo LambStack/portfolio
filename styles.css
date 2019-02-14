@@ -30,6 +30,11 @@ body{
 #thanks{
 	margin-top:100px;
 }
+#homeButton{
+	display:block;
+	width:100px;
+	margin: 0 auto;
+}
 p{
 	padding:15px 0;
 }
