@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    <title>Smart Watch Calendar | Step 3</title>
+</head>
+<body>
+    <nav>
+        <p>Smart Watch Calendar App</p>
+        <a href="index.html">Step 1</a>
+        <a href="step2.html">Step 2</a>
+        <a href="step3.html">Step 3</a>
+        <a href="step4.html">Step 4</a>
+        <a href="step5.html">Step 5</a>
+    </nav>
+    <header>
+        <h1 class="centered">Step Three: Evaluations</h1>
+        <p class="centered">
+            <i>
+                Now, evaluate the prototypes to see if they are effective and 
+                where changes need to be made.
+            </i>
+        </p>
+    </header>
+
+    <div class="orangeSect">
+        <p>
+            First, we had participants interact with our prototype for a few 
+            minutes. They would make an action on the screen, and the researcher 
+            would describe to them what visible results that action was meant 
+            to have, in many cases this would mean directing them to a new screen. 
+            To simplify the testing process, we came up with 11 questions, ten 
+            of which targeted one of the Nielsen heuristics, and one which was 
+            mean to encourage discussion with the participant. Participants 
+            answered these questions about the experience they had with the 
+            prototype.                
+        </p>
+        <p>
+            After interviewing multiple participants, we started noticing some 
+            redundancy in their answers. Below are the most common themes among 
+            the answers we were given.
+        </p>
+
+        <ol>
+            <li>
+                Can you tell where you are in the app at all times? 
+                <p>
+                    <i class="fas fa-check" style="color: green"></i>
+                    Yes, but not always on the date picker screens, especially if 
+                    they've looked away for a while.
+                </p>
+            </li>
+            <li>
+                Do you think you would need to learn any new terminology or 
+                iconography to use the app? 
+
+                <p>
+                    <i class="fas fa-check"  style="color: green"></i>
+                    No, it uses the same icons that I'm used to from other 
+                    apps. Navigation with swiping is sometimes unusual, 
+                    though, especially on the typing screen.
+                </p>
+            </li>
+            <li>
+                Do you feel you can easily undo a mistake you’ve made, like 
+                typing something you didn’t want to, or giving the wrong 
+                information for an event? 
+                
+                <p>
+                    <i class="fas fa-times" style="color: red"></i>
+                    No, sometimes I'll get stuck in a menu that I won't be 
+                    able to leave. (Date picker)
+                </p>
+            </li>
+            <li>
+                Do you think the system can help you avoid making errors? 
+                
+                <p>
+                    <i class="fas fa-times" style="color: red"></i>
+                    No, there are no confirmation dialogs to help me avoid making errors.
+                </p>
+            </li>
+            <li>
+                Does the system make it clear that an error has occurred? 
+                
+                <p>
+                    <i class="fas fa-times" style="color: red"></i>
+                    No, there are no error dialogs.
+                </p>
+            </li>
+            <li>
+                Is the same ‘language’ spoken across the entire app? 
+                
+                <p>
+                    <i class="fas fa-check" style="color: green"></i> 
+                    Yes, although the time is displayed differently on a couple screens.
+                </p>
+            </li>
+            <li>
+                Do you think you can quickly recognize all available actions, 
+                rather than needing to memorize them? 
+                
+                <p>
+                    <i class="fas fa-times" style="color: red"></i>
+                    No, navigation around pages can be challenging unless 
+                    you've memorized all the actions.
+                </p>
+            </li>
+            <li>
+                Does the system continually reward its use such that experienced 
+                users are able to gain more from the app? 
+
+                <p>
+                    <i class="fas fa-times" style="color: red"></i>
+                    No, except that experienced users will understand how 
+                    to navigate, but that should have been intuitive.
+                </p>
+            </li>
+            <li>
+                Is there any unnecessary information? 
+                
+                <p>
+                    <i class="fas fa-times" style="color: red"></i>
+                    No, in fact, there is not enough information, an animation 
+                    describing how to navigate could be helpful.
+                </p>
+            </li>
+            <li>
+                If you encountered a bug, would it be easy to find help to resolve?
+                
+                <p>
+                    <i class="fas fa-times" style="color: red"></i>
+                    No, I would have to Google it or go to the settings menu, but 
+                    it is challenging to get to the settings menu sometimes.
+                </p>
+            </li>
+            <li>
+                Is there anything else you'd like to say about the app? Anything 
+                you'd like to change?
+                
+                <p>
+                    <i class="fas fa-times" style="color: red"></i>
+                    The long and short of it is: it's hard to navigate through 
+                    the app and some things are inconsistent.
+                </p>
+            </li>
+        </ol>
+    </div>
+    <div class="blueSect">
+        <h2>Planned Changes</h2>
+        <p>
+            All pages will use pinch to exit, instead of swiping down. The 
+            animations will reflect this. On any page, they should be able 
+            to long press to bring up button versions of the available actions.
+        </p>
+
+        <div class="prototypes">
+            <div>
+                <h3>Week View</h3>
+                <img src="img/step2/Week.png" alt="Week view prototype">
+                <p>
+                    The 'Feb 2019' box should open the 'jump to date' feature.
+                    when tapped
+                </p>
+            </div>
+            <div>
+                <h3>Menu</h3>
+                <img src="img/step2/Menu.png" alt="Menu prototype">
+            </div>
+            <div>
+                <h3>Today View</h3>
+                <img src="img/step2/Today.png" alt="Today view prototype">
+                <p>
+                    The time on this page should be formatted as 1:00 instead of 1pm.
+                </p>
+            </div>
+            <div>
+                <h3>Event Details View</h3>
+                <img src="img/step2/EventDetails.png" alt="Event Details view prototype">
+                <div>
+                    <ul>
+                        <li>Add a save button at the bottom.</li>
+                        <li>Add a bell icon on the notification timer.</li>
+                        <li>
+                            Have seperate inputs for start & end time, or 
+                            start & duration.
+                        </li>
+                        <li>
+                            Pinch to exit, should show confirmation dialog for 
+                            saving or not.
+                        </li>
+                        <li>
+                            Add a way to categorize the events by color.
+                        </li>
+                    </ul>    
+                </div>
+            </div>
+            <div>
+                <h3>Typing</h3>
+                <img src="img/step2/Typing.png" alt="Typing prototype">
+                <div>
+                    <span>Add some hidden gestures:</span>
+                    <ul>
+                        <li>Shake to clear (with confirm dialog)</li>
+                        <li>Check mark to save</li>
+                    </ul>
+                    
+                    <span>Options for backspacing:</span>
+                    <ul>
+                        <li>Long press</li>
+                        <li>Double tap</li>
+                        <li>Draw a squiggle</li>
+                        <li>Don't do it, only allow full clear</li>
+                    </ul>
+                </div>
+            </div>
+            <div>
+                <h3>Month Picker</h3>
+                <img src="img/step2/MonthPicker.png" alt="Month picker prototype">
+            </div>
+            <div>
+                <h3>Day Picker</h3>
+                <img src="img/step2/DayPicker.png" alt="Day picker prototype">
+                <div>
+                    <ul>
+                        <li>
+                            The date picker pages should show the choices you've made 
+                            so far about the date.
+                        </li>
+                        <li>
+                            Swiping left and right on them should jump between 
+                            the other pickers.
+                        </li>
+                        <li>
+                            The arrow button should be the same size as the FAB 
+                            on the first screen.
+                        </li>
+                    </ul>  
+                </div>
+            </div>
+            <div>
+                <h3>Year Picker</h3>
+                <img src="img/step2/YearPicker.png" alt="Year picker prototype">
+            </div>
+            <div>
+                <h3>Time Picker</h3>
+                <img src="img/step2/TimePicker.png" alt="Time picker prototype">
+            </div>
+        </div>
+    </div>
+</body>
+</html>

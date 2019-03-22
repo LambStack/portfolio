@@ -121,12 +121,14 @@ hr
     flex-wrap: wrap;
 }
 
-.prototypes img
+.prototypes img, 
+.prototypes p,
+.prototypes ul
 {
     width: 300px;
 }
 
-.prototypes>div
+.prototypes > div
 {
     margin: 50px;
 }
