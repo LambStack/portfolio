@@ -64,6 +64,11 @@ p, ul
     margin-bottom: 50px;
 }
 
+li
+{
+    margin: 20px 0;
+}
+
 figure
 {
     margin-bottom: 150px;
