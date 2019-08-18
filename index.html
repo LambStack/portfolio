@@ -27,34 +27,6 @@
 	
 	<link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
     </head>
-<!-- Start of Async Drift Code  -->
-<script>
-	"use strict";
-	
-	!function() {
-	  var t = window.driftt = window.drift = window.driftt || [];
-	  if (!t.init) {
-		if (t.invoked) return void (window.console && console.error && console.error("Drift snippet included twice."));
-		t.invoked = !0, t.methods = [ "identify", "config", "track", "reset", "debug", "show", "ping", "page", "hide", "off", "on" ], 
-		t.factory = function(e) {
-		  return function() {
-			var n = Array.prototype.slice.call(arguments);
-			return n.unshift(e), t.push(n), t;
-		  };
-		}, t.methods.forEach(function(e) {
-		  t[e] = t.factory(e);
-		}), t.load = function(t) {
-		  var e = 3e5, n = Math.ceil(new Date() / e) * e, o = document.createElement("script");
-		  o.type = "text/javascript", o.async = !0, o.crossorigin = "anonymous", o.src = "https://js.driftt.com/include/" + n + "/" + t + ".js";
-		  var i = document.getElementsByTagName("script")[0];
-		  i.parentNode.insertBefore(o, i);
-		};
-	  }
-	}();
-	drift.SNIPPET_VERSION = '0.3.1';
-	drift.load('63usz28g7nx3');
-	</script>
-	<!-- End of Async Drift Code -->
     <body>	
     	
     		<div class = "container">
@@ -79,10 +51,18 @@
 						 Human Centered Computing before switching into Web & Mobile 
 						 Computing and finally becoming a double major between both. 
 						 Currently I work as a TA during the school year whenever it 
-						 doesn't get in the way of my classes. Last summer, I started working as 
+						 doesn't get in the way of my classes.
+						</p>
+						 <p>
+						In the summer of 2018, I started working as 
 						an Android developer for PatientKeeper in Waltham, MA. My experience
-						working for them has been amazing; I'm currently still working for PatientKeeper as 
-						a contractor in my free time.
+						working for them was been amazing, but when school started in the fall, 
+						I was only able to work part-time as a contractor for them.
+						Last summer, I went to San Francisco to take on a software engineering
+						internship with Uber working on their <a href="https://github.com/fusionjs/fusionjs">
+						open source JavaScript framework FusionJS.</a>
+						There, I was able to <a href = "https://github.com/fusionjs/fusionjs/pull/615"> 
+							improve the runtime performance of many Fusion's cli commands.</a>
 					</p>
 					<h3>Check out my <a href="https://github.com/LambStack/">GitHub</a></h3>
 					<h2>Contact Me</h2>
