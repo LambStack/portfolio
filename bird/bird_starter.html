@@ -47,6 +47,7 @@ function myFunction(x) {
  var birdSpriteImage = "http://s2js.com/img/etc/flappybird.png";
  var maxPipe = 0, currentPipe = 0;
  var passedPipes = [];
+ var BIRDS_PER_GEN = 5;
 
  function MySprite (img_url, bird1, bird2) {
         this.x = myCanvas.width / 3;
@@ -66,6 +67,7 @@ function myFunction(x) {
             /** Initialize mutational values of modifers and bias */
         }else{
             /** Initialize random defailts of modifiers and bias */
+            
         }
     }
  MySprite.prototype.Do_Frame_Things = function() {
@@ -107,6 +109,7 @@ function myFunction(x) {
 
     function activate(x){
         /** Sigmoid function */
+        return 1/(1+Math.exp(-x));
     }
 
 
@@ -140,7 +143,7 @@ function Got_Player_Input(MyEvent) {
    switch (game_mode) {
       case 'prestart': {
                         game_mode = 'running';
-                        for ( var i = 0; i < 10; i++){
+                        for ( var i = 0; i < BIRDS_PER_GEN; i++){
                             var bird = new MySprite("http://s2js.com/img/etc/flappybird.png", undefined, undefined);
                             birds.push(bird);
                         }
@@ -154,10 +157,11 @@ function Got_Player_Input(MyEvent) {
                         }
        } 
    MyEvent.preventDefault();
-   }
- addEventListener("touchstart", Got_Player_Input);     
- addEventListener("mousedown", Got_Player_Input);     
- addEventListener("keydown", Got_Player_Input);     
+}
+
+addEventListener("touchstart", Got_Player_Input);     
+addEventListener("mousedown", Got_Player_Input);     
+addEventListener("keydown", Got_Player_Input);     
 function make_bird_slow_and_fall() {
     for ( var i = 0, len = birds.length; i < len; i++){
             if (birds[i].velocity_y < max_fall_speed) {
@@ -172,7 +176,7 @@ function make_bird_slow_and_fall() {
             }
         }
     
-    }
+}
 function add_pipe(x_pos, top_of_gap, gap_width) {             
     var top_pipe = new MySprite();
     top_pipe.MyImg = pipe_piece;                              
@@ -187,7 +191,7 @@ function add_pipe(x_pos, top_of_gap, gap_width) {
     bottom_pipe.y = top_of_gap + gap_width;
     bottom_pipe.velocity_x = pipe_speed;
     pipes.push(bottom_pipe );
-    }
+}
 function make_bird_tilt_appropriately() {
     for ( var i = 0, len = birds.length; i < len; i++){
         if (birds[i].velocity_y < 0)  {
@@ -199,7 +203,7 @@ function make_bird_tilt_appropriately() {
         if(birds[i].y < 0) birds[i].y = 0;
     }
     
-    }
+}
 function show_the_pipes() {                          
    for (var i=0; i < pipes.length; i++) {
             pipes[i].Do_Frame_Things();
@@ -218,7 +222,7 @@ function show_the_pipes() {
     }
 
 
-    }
+}
 function check_for_end_game() {
    for (var i=0; i < pipes.length; i++) 
        for ( var j = 0, len = birds.length; j < len; j++){
@@ -232,25 +236,26 @@ function check_for_end_game() {
                 reset_game();
             }
        }
-   }
+}
 function display_intro_instructions () {
    ctx.font= "25px Arial";
    ctx.fillStyle= "red";
    ctx.textAlign="center";
    ctx.fillText("Press, touch or click to start", myCanvas.width / 2, myCanvas.height / 4);
-   }
+}
 function display_bar_running_along_bottom() {
      if (bottom_bar_offset < -23) bottom_bar_offset = 0;
      ctx.drawImage(bottom_bar, bottom_bar_offset, myCanvas.height - bottom_bar.height);
-     }
+}
 function reset_game() {
-     numGen++;
+    numGen++;
     chooseNewBirds();
     mutateBirds();
     currentPipe = 0;
-      pipes=[];                           // erase all the pipes from the array
-      add_all_my_pipes();                 // and load them back in their starting positions
-      }
+    pipes=[];                           // erase all the pipes from the array
+    add_all_my_pipes();                 // and load them back in their starting positions
+}
+
 function add_all_my_pipes() {
     add_pipe(500,  100, 140);
     add_pipe(800,   50, 140);
@@ -281,6 +286,7 @@ function Do_a_Frame () {
        ctx.fillText("Generation: " + numGen, 100, myCanvas.height - 26);
        ctx.fillText("Current Pipe: " + currentPipe, 100, myCanvas.height - 50);
        ctx.fillText("Best Pipe: " + maxPipe, 100, myCanvas.height - 75);
+       ctx.fillText("Birds Alive: " + birds.length, 100, myCanvas.height - 100);
 
     for ( var i = 0, len = birds.length; i < len; i++){
        birds[i].Decide_Action();
