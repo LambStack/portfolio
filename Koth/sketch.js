@@ -6,9 +6,17 @@ let timer = 200;
 function setup() {
 	createCanvas(1280, 720);
 
-	button = createButton('click me');
-	button.position(19, 19);
+	button = createButton('Reset');
+	button.position(width / 2 - 100, height + 20);
 	button.mousePressed(reset);
+
+	button2 = createButton('Save');
+	button2.position(width / 2, height + 20);
+	button2.mousePressed(saveDude);
+
+	button3 = createButton('Load');
+	button3.position(width / 2 + 100, height + 20);
+	button3.mousePressed(loadDude);
 
 	hill = { x: width / 2, y: height / 2, radius: 150 };
 	for (let i = 0; i < 4; i++) {
@@ -306,4 +314,26 @@ function keyReleased() {
 			dudes[0].moveV(-accel);
 		}
 	}
+}
+
+function saveDude() {
+	console.log(JSON.stringify(dudes[3]));
+}
+
+function loadDude() {
+	var ajaxRequest = new XMLHttpRequest();
+	ajaxRequest.onreadystatechange = function () {
+		if (ajaxRequest.readyState == 4) {
+			//the request is completed, now check its status
+			if (ajaxRequest.status == 200) {
+				console.log(ajaxRequest.responseText);
+			} else {
+				console.log('Status error: ' + ajaxRequest.status);
+			}
+		} else {
+			console.log('Ignored readyState: ' + ajaxRequest.readyState);
+		}
+	};
+	ajaxRequest.open('GET', 'https://koth-3ef5d.firebaseio.com/');
+	ajaxRequest.send();
 }

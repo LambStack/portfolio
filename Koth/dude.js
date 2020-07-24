@@ -9,15 +9,15 @@ class Dude {
 		{ x: width - this.SIZE, y: height - this.SIZE },
 	];
 	classname = 'Dude';
+	steps_per_tick = 1;
 
 	//ml stuff
 
 	learn = function () {
-		var steps_per_tick = 1;
 		var action, state;
 		var smooth_reward = null;
 		var flott = 0;
-		for (var k = 0; k < steps_per_tick; k++) {
+		for (var k = 0; k < this.steps_per_tick; k++) {
 			state = env.getState();
 			action = agent.act(state);
 			var obs = env.think(action);
@@ -207,28 +207,22 @@ class Dude {
 		if (!this.playerControlled) {
 			if (action === 0) {
 				this.acceleration.x = -this.ACCEL;
-				console.log('left');
 			}
 			if (action === 1) {
 				this.acceleration.x = this.ACCEL;
-				console.log('right');
 			}
 			if (action === 2) {
 				this.acceleration.y = -this.ACCEL;
-				console.log('up');
 			}
 			if (action === 3) {
 				this.acceleration.y = this.ACCEL;
-				console.log('down');
 			}
-			// if (action === 4) {
-			// 	this.explode(dudes);
-			// 	console.log('explode');
-			// }
-			// if (action === 5) {
-			// 	this.blip();
-			// 	console.log('blip');
-			// }
+			if (action === 4) {
+				this.explode(dudes);
+			}
+			if (action === 5) {
+				this.blip();
+			}
 		}
 
 		return { ns: this.getState(), r: this.score };
