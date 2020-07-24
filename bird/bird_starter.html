@@ -65,8 +65,16 @@ function myFunction(x) {
         //Nerual net
         if(bird1 !== undefined && bird2 !== undefined){
             /** Initialize mutational values of modifers and bias */
+            this.mXDist = Math.random() > 0.5 ? bird1.mXDist : bird2.mXDist;
+            this.mYDist = Math.random() > 0.5 ? bird1.mYDist : bird2.mYDist;
+            this.bias = Math.random() > 0.5 ? bird1.bias : bird2.bias;
+            
+
         }else{
             /** Initialize random defailts of modifiers and bias */
+            this.mXDist = (Math.random() * 4) -2; 
+            this.mYDist = (Math.random() * 4) -2; 
+            this.bias = (Math.random() * 4) -2; 
             
         }
     }
@@ -105,6 +113,9 @@ function myFunction(x) {
 
         //console.log(activate(this.mDistance_to_pipe * distance_to_pipe + this.mOpening * yOpening + this.mClosing * yClosing + this.mHeight * this.y + this.bias));
         /** do the nerual net caldulation */
+        if(activate(this.mXDist * distance_to_pipe + this.mYDist * yDist + this.bias) > 0.5){
+            this.Do_Flap();
+        }
     };
 
     function activate(x){
@@ -116,10 +127,27 @@ function myFunction(x) {
 
     function chooseNewBirds(){
        /** Decide Which birds get to live */
+       deadBirds.sort(comapreFitness);
+       birds = [];
+       var mutatedBird = new MySprite(birdSpriteImage, deadBirds[0], deadBirds[0]);
+       birds.push(mutatedBird);
+       mutatedBird = new MySprite(birdSpriteImage, deadBirds[0], deadBirds[1]);
+       birds.push(mutatedBird);
+       mutatedBird = new MySprite(birdSpriteImage, deadBirds[1], deadBirds[2]);
+       birds.push(mutatedBird);
+       while(birds.length < BIRDS_PER_GEN){
+           birds.push(new MySprite(birdSpriteImage, deadBirds[Math.random()*birds.length], deadBirds[Math.random()*birds.length]));
+       }
     }
 
     function mutateBirds(){
         /** Mutate the living birds */
+        for(var i = 0; i<birds.length; i++){
+            birds[i].mXDist += (Math.random() * (2 * learningRate) - learningRate) * birds[i].mXDist;
+            birds[i].mYDist += (Math.random() * (2 * learningRate) - learningRate) * birds[i].mYDist;
+            birds[i].bias += (Math.random() * (2 * learningRate) - learningRate) * birds[i].bias;
+
+        }
     }
 
     function comapreFitness(a, b){
@@ -267,9 +295,9 @@ function add_all_my_pipes() {
     add_pipe(2200, 250, 120);
     add_pipe(2400,  30, 100);
     add_pipe(2700, 300, 100);
-    add_pipe(3000, 100,  80);
-    add_pipe(3300, 250,  80);
-    add_pipe(3600,  50,  60);
+    add_pipe(3000, 100,  90);
+    add_pipe(3300, 250,  90);
+    add_pipe(3600,  50,  90);
     var finish_line = new MySprite("http://s2js.com/img/etc/flappyend.png");
     finish_line.x = 3900;
     finish_line.velocity_x = pipe_speed;
