@@ -1,5 +1,7 @@
 class Dude {
 	SIZE = 35;
+	ACCEL = 0.3;
+	MAX_SPEED = 8;
 	spawnLocations = [
 		{ x: 0, y: 0 },
 		{ x: 0, y: height - this.SIZE },
@@ -153,12 +155,22 @@ class Dude {
 		if (this.isDead) {
 			return { ns: this.getState(), r: 0 };
 		}
-		if (this.velocity.x > 5) {
-			this.velocity.x = 5;
+		if (this.velocity.x > this.MAX_SPEED) {
+			this.velocity.x = this.MAX_SPEED;
 		}
-		if (this.velocity.y > 5) {
-			this.velocity.y = 5;
+		if (this.velocity.x < -this.MAX_SPEED) {
+			this.velocity.x = -this.MAX_SPEED;
 		}
+		if (this.velocity.y > this.MAX_SPEED) {
+			this.velocity.y = this.MAX_SPEED;
+		}
+		if (this.velocity.y < -this.MAX_SPEED) {
+			this.velocity.y = -this.MAX_SPEED;
+		}
+
+		this.velocity.x += this.acceleration.x;
+		this.velocity.y += this.acceleration.y;
+
 		this.location.x += this.velocity.x;
 		this.location.y += this.velocity.y;
 
@@ -194,19 +206,19 @@ class Dude {
 
 		if (!this.playerControlled) {
 			if (action === 0) {
-				this.velocity.x = -5;
+				this.acceleration.x = -this.ACCEL;
 				console.log('left');
 			}
 			if (action === 1) {
-				this.velocity.x = 5;
+				this.acceleration.x = this.ACCEL;
 				console.log('right');
 			}
 			if (action === 2) {
-				this.velocity.y = -5;
+				this.acceleration.y = -this.ACCEL;
 				console.log('up');
 			}
 			if (action === 3) {
-				this.velocity.y = 5;
+				this.acceleration.y = this.ACCEL;
 				console.log('down');
 			}
 			// if (action === 4) {
@@ -223,17 +235,19 @@ class Dude {
 	};
 
 	moveH = function (x) {
-		this.velocity.x += x;
+		this.acceleration.x += x;
 	};
 	moveV = function (y) {
-		this.velocity.y += y;
+		this.acceleration.y += y;
 	};
 
 	stopH = function () {
 		this.velocity.x = 0;
+		this.acceleration.x = 0;
 	};
 	stopV = function () {
 		this.velocity.y = 0;
+		this.acceleration.y = 0;
 	};
 	explode = function (dudes) {
 		if (this.isDead) {

@@ -16,6 +16,11 @@ function setup() {
 
 		dudes.push(dude);
 
+		// temporary skipping making dots to help train
+		if (i === 1 || i === 2) {
+			continue;
+		}
+
 		// creates dots that give points between the dudes and the circle
 		// (attempt to lead them to the circle)
 		let tempDots = [];
@@ -80,10 +85,16 @@ function setup() {
 function reset() {
 	pointsDots = [];
 
-	for (let dude of dudes) {
+	for (let i = 0; i < dudes.length; i++) {
+		let dude = dudes[i];
 		dude.location.x = dude.spawnLocation.x;
 		dude.location.y = dude.spawnLocation.y;
 		dude.score = 0;
+
+		// temporary skipping making dots to help train
+		if (i === 1 || i === 2) {
+			continue;
+		}
 
 		// creates dots that give points between the dudes and the circle
 		// (attempt to lead them to the circle)
@@ -154,7 +165,6 @@ function draw() {
 		}
 		dude.think();
 		//check collision and score points
-		// Maybe remove this part and rename 'think'
 		if (
 			collideRectCircle(
 				dude.location.x,
@@ -253,20 +263,20 @@ function draw() {
 		}
 	}
 }
-
+let accel = 1;
 function keyPressed() {
 	if (keyCode === LEFT_ARROW) {
 		dudes[0].stopH();
-		dudes[0].moveH(-5);
+		dudes[0].moveH(-accel);
 	} else if (keyCode === RIGHT_ARROW) {
 		dudes[0].stopH();
-		dudes[0].moveH(5);
+		dudes[0].moveH(accel);
 	} else if (keyCode === UP_ARROW) {
 		dudes[0].stopV();
-		dudes[0].moveV(-5);
+		dudes[0].moveV(-accel);
 	} else if (keyCode === DOWN_ARROW) {
 		dudes[0].stopV();
-		dudes[0].moveV(5);
+		dudes[0].moveV(accel);
 	} else if (keyCode === 32) {
 		dudes[0].explode(dudes);
 	} else if (keyCode === 70) {
@@ -278,22 +288,22 @@ function keyReleased() {
 	if (keyCode === LEFT_ARROW) {
 		dudes[0].stopH();
 		if (keyIsDown(RIGHT_ARROW)) {
-			dudes[0].moveH(5);
+			dudes[0].moveH(accel);
 		}
 	} else if (keyCode === RIGHT_ARROW) {
 		dudes[0].stopH();
 		if (keyIsDown(LEFT_ARROW)) {
-			dudes[0].moveH(-5);
+			dudes[0].moveH(-accel);
 		}
 	} else if (keyCode === UP_ARROW) {
 		dudes[0].stopV();
 		if (keyIsDown(DOWN_ARROW)) {
-			dudes[0].moveV(5);
+			dudes[0].moveV(accel);
 		}
 	} else if (keyCode === DOWN_ARROW) {
 		dudes[0].stopV();
 		if (keyIsDown(UP_ARROW)) {
-			dudes[0].moveV(-5);
+			dudes[0].moveV(-accel);
 		}
 	}
 }
