@@ -6,9 +6,23 @@ let rowSize = 3;
 let lastClickedIndex = 8;
 let puzzleImage;
 let gameStarted = false;
+let backUpImage;
 
 function preload() {
-	puzzleImage = loadImage('images/image.jpg');
+	backUpImage = loadImage('images/image.jpg');
+}
+function fileToGrid() {
+	const selectedFile = document.getElementById('upload');
+	const myImageFile = selectedFile.files[0];
+	let urlOfImageFile = URL.createObjectURL(myImageFile);
+	puzzleImage = loadImage(urlOfImageFile, () => {
+		doStuff();
+	});
+}
+
+function backup() {
+	puzzleImage = backUpImage;
+	doStuff();
 }
 
 function setup() {
@@ -18,8 +32,11 @@ function setup() {
 	noFill();
 	tileWidth = width / rowSize;
 	tileHeight = height / rowSize;
+}
 
+function doStuff() {
 	image(puzzleImage, 0, 0);
+
 	for (let i = 0; i < rowSize * rowSize - 1; i++) {
 		solvedTiles.push({
 			id: i,
@@ -31,9 +48,7 @@ function setup() {
 			),
 		});
 	}
-
 	tiles = [...solvedTiles];
-	//shuffleArray(tiles);
 	solvedTiles.push({ id: 8, img: loadImage('images/nine.png') });
 	tiles.push(solvedTiles[8]);
 	shuffleTiles();
@@ -94,10 +109,12 @@ function handleClick(x, y) {
 // 		[array[i], array[j]] = [array[j], array[i]];
 // 	}
 // }
-
+let id = 0;
 function shuffleTiles() {
+	clearInterval(id);
+
 	let n = 0;
-	let id = setInterval(function () {
+	id = setInterval(function () {
 		if (n++ < 1000) {
 			handleClick(random() * width, random() * height);
 		} else {
