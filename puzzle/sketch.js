@@ -13,8 +13,8 @@ function preload() {
 
 function setup() {
 	createCanvas(1280, 720);
-	stroke('blue');
-	strokeWeight(7);
+	stroke('gray');
+	strokeWeight(2);
 	noFill();
 	tileWidth = width / rowSize;
 	tileHeight = height / rowSize;
