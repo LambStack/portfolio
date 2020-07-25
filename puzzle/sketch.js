@@ -35,7 +35,7 @@ function setup() {
 }
 
 function doStuff() {
-	image(puzzleImage, 0, 0);
+	image(puzzleImage, 0, 0, width, height);
 
 	for (let i = 0; i < rowSize * rowSize - 1; i++) {
 		solvedTiles.push({
@@ -103,12 +103,7 @@ function handleClick(x, y) {
 		lastClickedIndex = clickedIndex;
 	}
 }
-// function shuffleArray(array) {
-// 	for (let i = array.length - 1; i > 0; i--) {
-// 		const j = Math.floor(Math.random() * (i + 1));
-// 		[array[i], array[j]] = [array[j], array[i]];
-// 	}
-// }
+
 let id = 0;
 function shuffleTiles() {
 	clearInterval(id);
