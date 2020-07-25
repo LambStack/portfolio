@@ -58,16 +58,22 @@ function draw() {
 }
 
 function mouseClicked() {
-	let clickedIndex =
-		Math.floor(mouseX / tileWidth) + Math.floor(mouseY / tileHeight) * rowSize;
-	console.log(clickedIndex);
-	let temp = tiles[lastClickedIndex];
-	console.log(temp);
-	tiles[lastClickedIndex] = tiles[clickedIndex];
-	tiles[clickedIndex] = temp;
-	console.log(tiles);
-	//lastClickedIndex = -1;
-	lastClickedIndex = clickedIndex;
+	let clickedX = Math.floor(mouseX / tileWidth);
+	let clickedY = Math.floor(mouseY / tileHeight);
+	let clickedIndex = clickedX + clickedY * rowSize;
+
+	let lastX = lastClickedIndex % rowSize;
+	let lastY = Math.floor(lastClickedIndex / rowSize);
+
+	let diffX = Math.abs(clickedX - lastX);
+	let diffY = Math.abs(clickedY - lastY);
+
+	if ((diffX === 1 || diffY === 1) && (diffX === 0 || diffY === 0)) {
+		let temp = tiles[lastClickedIndex];
+		tiles[lastClickedIndex] = tiles[clickedIndex];
+		tiles[clickedIndex] = temp;
+		lastClickedIndex = clickedIndex;
+	}
 }
 
 function shuffleArray(array) {
