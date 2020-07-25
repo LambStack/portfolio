@@ -217,6 +217,7 @@ class Dude {
 			if (action === 3) {
 				this.acceleration.y = this.ACCEL;
 			}
+
 			// if (action === 4) {
 			// 	this.explode(dudes);
 			// }
@@ -224,8 +225,11 @@ class Dude {
 			// 	this.blip();
 			// }
 		}
-
-		return { ns: this.getState(), r: this.score - currScore };
+		let reward = -Math.hypot(
+			this.sensors.xDistToCenter - this.location.x,
+			this.sensors.yDistToCenter - this.location.y,
+		);
+		return { ns: this.getState(), r: reward };
 	};
 
 	moveH = function (x) {

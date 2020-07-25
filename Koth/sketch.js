@@ -187,7 +187,7 @@ function draw() {
 		) {
 			stroke(dude.color);
 			circle(hill.x, hill.y, hill.radius);
-			dude.score += 0.03;
+			dude.score += 1;
 		}
 
 		for (let dot of pointsDots) {
@@ -203,7 +203,7 @@ function draw() {
 						dot.radius * 2,
 					)
 				) {
-					dude.score += 5;
+					dude.score += 2;
 					dot.hidden = true;
 				}
 
@@ -252,23 +252,6 @@ function draw() {
 		if (!dot.hidden) {
 			fill(138, 43, 226); // a nice purple
 			circle(dot.x, dot.y, dot.radius);
-
-			for (let dude of dudes) {
-				if (
-					collideRectCircle(
-						dude.location.x,
-						dude.location.y,
-						dude.SIZE,
-						dude.SIZE,
-						dot.x,
-						dot.y,
-						dot.radius * 2,
-					)
-				) {
-					dude.score += 5;
-					dot.hidden = true;
-				}
-			}
 		}
 	}
 }
