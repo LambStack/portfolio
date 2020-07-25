@@ -57,7 +57,6 @@ class Dude {
 	// end ml stuff
 	constructor(x) {
 		this.score = 0;
-		this.oldScore = 0;
 		this.spawnLocation = this.spawnLocations[x];
 		this.location = { x: 0, y: 0 };
 		this.location.x = this.spawnLocation.x;
@@ -152,6 +151,7 @@ class Dude {
 	};
 
 	think = function (action) {
+		let currScore = this.score;
 		if (this.isDead) {
 			return { ns: this.getState(), r: 0 };
 		}
@@ -217,15 +217,15 @@ class Dude {
 			if (action === 3) {
 				this.acceleration.y = this.ACCEL;
 			}
-			if (action === 4) {
-				this.explode(dudes);
-			}
-			if (action === 5) {
-				this.blip();
-			}
+			// if (action === 4) {
+			// 	this.explode(dudes);
+			// }
+			// if (action === 5) {
+			// 	this.blip();
+			// }
 		}
 
-		return { ns: this.getState(), r: this.score };
+		return { ns: this.getState(), r: this.score - currScore };
 	};
 
 	moveH = function (x) {

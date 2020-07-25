@@ -12,6 +12,28 @@
 		<title>King of The Hill</title>
 	</head>
 	<body>
+		<!-- The core Firebase JS SDK is always required and must be listed first -->
+		<script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-app.js"></script>
+
+		<!-- TODO: Add SDKs for Firebase products that you want to use
+	 https://firebase.google.com/docs/web/setup#available-libraries -->
+		<script src="https://www.gstatic.com/firebasejs/7.17.0/firebase-database.js"></script>
+
+		<script>
+			// Your web app's Firebase configuration
+			var firebaseConfig = {
+				apiKey: 'AIzaSyAgSkxoYL4TK62pbtDnWlwEftxYqbcEWRg',
+				authDomain: 'koth-3ef5d.firebaseapp.com',
+				databaseURL: 'https://koth-3ef5d.firebaseio.com',
+				projectId: 'koth-3ef5d',
+				storageBucket: 'koth-3ef5d.appspot.com',
+				messagingSenderId: '94076731082',
+				appId: '1:94076731082:web:f4caaa57b01bdfbc83fe33',
+			};
+			// Initialize Firebase
+			firebase.initializeApp(firebaseConfig);
+		</script>
+
 		<!-- rljs -->
 		<script type="text/javascript" src="lib/rl.js"></script>
 		<script src="sketch.js"></script>

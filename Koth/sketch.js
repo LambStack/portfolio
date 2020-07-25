@@ -91,6 +91,7 @@ function setup() {
 }
 
 function reset() {
+	timer = 200;
 	pointsDots = [];
 
 	for (let i = 0; i < dudes.length; i++) {
@@ -157,13 +158,13 @@ function draw() {
 	textSize(32);
 	text(timer, width / 2, 0);
 
-	if (timer <= 0) {
-		fill(0);
-		textAlign(CENTER, CENTER);
+	// if (timer <= 0) {
+	// 	fill(0);
+	// 	textAlign(CENTER, CENTER);
 
-		text('GAME OVER', width / 2, height / 2);
-		noLoop();
-	}
+	// 	text('GAME OVER', width / 2, height / 2);
+	// 	noLoop();
+	// }
 
 	for (let dude of dudes) {
 		dude.visableObjects = [];
@@ -316,24 +317,30 @@ function keyReleased() {
 	}
 }
 
+let savedAgent = undefined;
+
 function saveDude() {
-	console.log(JSON.stringify(dudes[3]));
+	firebase
+		.database()
+		.ref('/DNQASavedState')
+		.set(JSON.stringify(agent.toJSON()));
+
+	console.log(agent.toJSON());
+
+	savedAgent = JSON.stringify(agent.toJSON());
+	console.log(agent.toJSON());
 }
 
 function loadDude() {
-	var ajaxRequest = new XMLHttpRequest();
-	ajaxRequest.onreadystatechange = function () {
-		if (ajaxRequest.readyState == 4) {
-			//the request is completed, now check its status
-			if (ajaxRequest.status == 200) {
-				console.log(ajaxRequest.responseText);
-			} else {
-				console.log('Status error: ' + ajaxRequest.status);
-			}
-		} else {
-			console.log('Ignored readyState: ' + ajaxRequest.readyState);
-		}
-	};
-	ajaxRequest.open('GET', 'https://koth-3ef5d.firebaseio.com/');
-	ajaxRequest.send();
+	firebase
+		.database()
+		.ref('/DNQASavedState')
+		.once('value')
+		.then(function (snapshot) {
+			// console.log('loading form sektch');
+			// console.log(JSON.parse(savedAgent));
+			agent.fromJSON(JSON.parse(snapshot.toJSON()));
+			// console.log(agent.toJSON());
+			// console.log(snapshot.toJSON());
+		});
 }
