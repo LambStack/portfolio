@@ -1,0 +1,5 @@
+2020/07/25-11:16:07.723 b703 Reusing MANIFEST /Users/agnelli/_dev/portfolio/”/var/tmp/Chrome”/Default/IndexedDB/https_tpc.googlesyndication.com_0.indexeddb.leveldb/MANIFEST-000001
+2020/07/25-11:16:10.122 12aa7 Level-0 table #5: started
+2020/07/25-11:16:10.137 12aa7 Level-0 table #5: 360 bytes OK
+2020/07/25-11:16:10.152 12aa7 Delete type=0 #3
+2020/07/25-11:16:10.153 12aa7 Manual compaction at level-0 from (begin) .. (end); will stop at (end)

@@ -1,0 +1,8 @@
+2020/07/25-11:27:07.566 1a2c3 Reusing MANIFEST /Users/agnelli/_dev/portfolio/”/var/tmp/Chrome”/Default/IndexedDB/https_tpc.googlesyndication.com_0.indexeddb.leveldb/MANIFEST-000001
+2020/07/25-11:27:07.566 1a2c3 Recovering log #4
+2020/07/25-11:27:07.566 1a2c3 Reusing old log /Users/agnelli/_dev/portfolio/”/var/tmp/Chrome”/Default/IndexedDB/https_tpc.googlesyndication.com_0.indexeddb.leveldb/000004.log 
+2020/07/25-11:27:09.760 12aa7 Level-0 table #8: started
+2020/07/25-11:27:09.760 12aa7 Level-0 table #8: 0 bytes OK
+2020/07/25-11:27:09.781 12aa7 Delete type=0 #4
+2020/07/25-11:27:09.781 12aa7 Manual compaction at level-0 from (begin) .. (end); will stop at (end)
+2020/07/25-11:27:09.781 12aa7 Manual compaction at level-1 from (begin) .. (end); will stop at (end)

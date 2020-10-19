@@ -1,0 +1,8 @@
+2020/07/25-11:28:23.451 ec9f Reusing MANIFEST /Users/agnelli/_dev/portfolio/”/var/tmp/Chrome”/Default/IndexedDB/https_www.youtube.com_0.indexeddb.leveldb/MANIFEST-000001
+2020/07/25-11:28:23.451 ec9f Recovering log #4
+2020/07/25-11:28:23.452 ec9f Reusing old log /Users/agnelli/_dev/portfolio/”/var/tmp/Chrome”/Default/IndexedDB/https_www.youtube.com_0.indexeddb.leveldb/000004.log 
+2020/07/25-11:28:55.877 12aa7 Level-0 table #8: started
+2020/07/25-11:28:55.877 12aa7 Level-0 table #8: 0 bytes OK
+2020/07/25-11:28:55.900 12aa7 Delete type=0 #4
+2020/07/25-11:28:55.901 12aa7 Manual compaction at level-0 from (begin) .. (end); will stop at (end)
+2020/07/25-11:28:55.901 12aa7 Manual compaction at level-1 from (begin) .. (end); will stop at (end)

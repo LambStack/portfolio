@@ -2,21 +2,32 @@ let hill = undefined;
 let dudes = [];
 let pointsDots = [];
 let timer = 200;
+let training = false;
 
 function setup() {
 	createCanvas(1280, 720);
 
 	button = createButton('Reset');
-	button.position(width / 2 - 100, height + 20);
+	button.position(width / 2 - 150, height + 20);
 	button.mousePressed(reset);
 
 	button2 = createButton('Save');
-	button2.position(width / 2, height + 20);
+	button2.position(width / 2 - 50, height + 20);
 	button2.mousePressed(saveDude);
 
 	button3 = createButton('Load');
-	button3.position(width / 2 + 100, height + 20);
+	button3.position(width / 2 + 50, height + 20);
 	button3.mousePressed(loadDude);
+
+	button3 = createButton('Train');
+	button3.position(width / 2 + 150, height + 20);
+	button3.mousePressed(function () {
+		if (dudes[3].steps_per_tick === 1) {
+			dudes[3].steps_per_tick = 100;
+		} else {
+			dudes[3].steps_per_tick = 1;
+		}
+	});
 
 	hill = { x: width / 2, y: height / 2, radius: 150 };
 	for (let i = 0; i < 4; i++) {
@@ -153,6 +164,7 @@ function draw() {
 	stroke(6);
 	strokeWeight(6);
 	circle(hill.x, hill.y, hill.radius);
+
 	textAlign(CENTER, TOP);
 	noStroke();
 	textSize(32);

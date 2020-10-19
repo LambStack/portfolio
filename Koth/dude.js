@@ -31,10 +31,10 @@ class Dude {
 	};
 
 	getNumStates = function () {
-		return 11; //x,y,vx,vy, x∆dot, y∆dot, x∆dude, y∆dude, x∆hill, y∆hill, dead
+		return 6; //x,y,vx,vy, , , x∆hill, y∆hill, //dead , x∆dude, y∆dude,x∆dot, y∆dot
 	};
 	getMaxNumActions = function () {
-		return 5; //up, down, left, right, nothing, blip, explode
+		return 5; //up, down, left, right, nothing,// blip, explode
 	};
 	getState = function () {
 		this.look();
@@ -45,11 +45,11 @@ class Dude {
 			this.velocity,
 			this.sensors.xDistToCenter,
 			this.sensors.yDistToCenter,
-			this.sensors.xDistNearestDot,
-			this.sensors.yDistNearestDot,
-			this.sensors.xDistNearestDude,
-			this.sensors.yDistNearestDude,
-			this.isDead,
+			// this.sensors.xDistNearestDot,
+			// this.sensors.yDistNearestDot,
+			// this.sensors.xDistNearestDude,
+			// this.sensors.yDistNearestDude,
+			// this.isDead,
 		];
 		return s;
 	};
@@ -151,7 +151,6 @@ class Dude {
 	};
 
 	think = function (action) {
-		let currScore = this.score;
 		if (this.isDead) {
 			return { ns: this.getState(), r: 0 };
 		}
@@ -225,10 +224,14 @@ class Dude {
 			// 	this.blip();
 			// }
 		}
-		let reward = -Math.hypot(
-			this.sensors.xDistToCenter - this.location.x,
-			this.sensors.yDistToCenter - this.location.y,
-		);
+
+		let x = this.sensors.xDistToCenter;
+		let y = this.sensors.yDistToCenter;
+		let reward = -Math.sqrt(x * x + y * y);
+
+		if (reward > -150) {
+			reward = 300;
+		}
 		return { ns: this.getState(), r: reward };
 	};
 
